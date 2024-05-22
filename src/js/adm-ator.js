@@ -1,33 +1,67 @@
 'use strict'
 
-import { getAtores } from "./funcoes.js"
-
-const id             = document.getElementById('id')
-const nomeAtor       = document.getElementById('nome')
-const dataNascimento = document.getElementById('data-nascimento')
-const sexo           = document.getElementById('sexo')
-const nacionalidade  = document.getElementById('nacionalidade')
+import { getAtores, deleteAtor } from "./funcoes.js"
 
 const criarLinha = (ator) => {
 
+    const container = document.createElement('div')
+    container.className = "flex justify-between w-full gap-3"
+
+    const id = document.createElement('div')
+    id.className = "bg-white w-full h-10 rounded-md font-bold flex items-center justify-center"
     id.textContent = ator.id
-    nomeAtor.textContent = ator.nome
+    
+    const nome = document.createElement('div')
+    nome.className = "bg-white w-full h-10 rounded-md font-bold flex items-center justify-center"
+    nome.textContent = ator.nome
+
+    const dataNascimento = document.createElement('div')
+    dataNascimento.className = "bg-white w-full h-10 rounded-md font-bold flex items-center justify-center"
     dataNascimento.textContent = ator.data_nascimento
-    sexo.textContent = ator.sexo_id
-    nacionalidade.textContent = ator.nacionalidade
-   
+
+    const sexo = document.createElement('div')
+    sexo.className = "bg-white w-full h-10 rounded-md font-bold flex items-center justify-center"
+    sexo.textContent = ator.sexo[0].nome
+    
+    const nacionalidade = document.createElement('div')
+    nacionalidade.className = "bg-white w-full h-10 rounded-md font-bold flex items-center justify-center"
+    if (ator.hasOwnProperty('nacionalidade')) {
+        console.log(ator.nacionalidade)
+        nacionalidade.textContent = ator.nacionalidade[0].nome
+    }else{
+        nacionalidade.textContent = ''
+    }
+    
+    const buttonDelete = document.createElement('button');
+    buttonDelete.className = "flex items-center justify-center";
+    const iconeDelete = document.createElement('img');
+    iconeDelete.className = "w-24";
+    iconeDelete.src = "../../../img/lixo.png";
+    iconeDelete.alt = "";
+    buttonDelete.appendChild(iconeDelete)
+
+    buttonDelete.addEventListener('click', async () => {
+        await deleteAtor(ator.id) 
+        window.location.reload()
+    })
+    
+    container.replaceChildren(id, nome, dataNascimento, sexo, nacionalidade, buttonDelete)
+
+
+    return container
 }
 
 async function mostrarLinha (){
-    const container = document.getElementById('container')
-    const ator = await getAtores()
 
-    console.log(ator)
+    const container = document.getElementById('container-atores')
+    const atores = await getAtores()
 
+    container.replaceChildren('')
 
-    ator.forEach( ator => {
+    atores.forEach( ator => {
+    
         const linha = criarLinha (ator)
-        container.appendChild(linha)
+        container.appendChild (linha)
     })
 }
 

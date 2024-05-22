@@ -2,59 +2,70 @@
 
 import { getFilmes, deleteFilme } from "./funcoes.js"
 
-    // const filmeId = localStorage.getItem('filmeId')
-    // const listaFilme = await getFilmes()
-
-    const id            = document.getElementById('id')
-    const filmeTitulo   = document.getElementById('titulo')
-    // const genero     = document.getElementById('genero')
-    // const ator       = document.getElementById('ator')
-    // const diretor    = document.getElementById('diretor')
-    const classificacao = document.getElementById('classificacao')
-    const duracao       = document.getElementById('duracao')
-    const valor         = document.getElementById('valor')
-    const iconeDelete   = document.getElementById('delete')
-    iconeDelete.addEventListener('click', ()=>{
-        deleteFilme(filme.id)
-        window.location.reload()
-    })
-    const iconeEditar   = document.getElementById('update')
-
-    // const listaFilme = await getFilmes()
-    // const container = document.getElementById('container')
-
 const criarLinha = (filme) => {
 
+    const container = document.createElement('div')
+    container.className = "flex justify-between w-full gap-3"
+
+    const id = document.createElement('div')
+    id.className = "bg-white w-full h-10 rounded-md font-bold flex items-center justify-center"
     id.textContent = filme.id
-    filmeTitulo.textContent = filme.nome
+    
+    const nome = document.createElement('div')
+    nome.className = "bg-white w-full h-10 rounded-md font-bold flex items-center justify-center"
+    nome.textContent = filme.nome
+
+    const classificacao = document.createElement('div')
+    classificacao.className = "bg-white w-full h-10 rounded-md font-bold flex items-center justify-center"
     classificacao.textContent = filme.classificacao_id
+
+    const duracao = document.createElement('div')
+    duracao.className = "bg-white w-full h-10 rounded-md font-bold flex items-center justify-center"
     duracao.textContent = filme.duracao
+
+    const valor = document.createElement('div')
+    valor.className = "bg-white w-full h-10 rounded-md font-bold flex items-center justify-center"
     valor.textContent = filme.valor_unitario
-   
+
+    const buttonDelete = document.createElement('button');
+    buttonDelete.className = "flex items-center justify-center";
+    const iconeDelete = document.createElement('img');
+    iconeDelete.className = "w-24";
+    iconeDelete.src = "../../../img/lixo.png";
+    iconeDelete.alt = "";
+    buttonDelete.appendChild(iconeDelete)
+
+    buttonDelete.addEventListener('click', async () => {
+        await deleteFilme(filme.id) 
+        window.location.reload()
+    })
+
+    container.replaceChildren(id, nome, classificacao, duracao, valor, buttonDelete)
+
+    return container
 }
 
 async function mostrarLinha (){
-    const container = document.getElementById('container')
-    const filme = await getFilmes()
+    const container = document.getElementById('container-filmes')
+    const filmes = await getFilmes()
 
-    console.log(filme)
+    console.log(filmes)
 
+    container.replaceChildren('')
 
-    filme.forEach( filme => {
+    filmes.forEach( filme => {
+        console.log(filme)
         const linha = criarLinha (filme)
-        container.appendChild(linha)
+        container.appendChild (linha)
     })
 }
 
 mostrarLinha()
 
+mostrarLinha()
 
-// Função que faz a mesma coisa que a função mostrar linha.
-    // listaFilme.forEach(filme => {
 
-    //     console.log(filme)
-    //     criarLinha(filme)
-    // })
+
 
 const openModalButton = document.getElementById('openModal')
 const closeModalButton = document.getElementById('closeModal')
@@ -68,19 +79,3 @@ const adicionarFilmeButton = document.getElementById('adicionarFilme')
     closeModalButton.addEventListener('click', () => {
         modal.classList.add('hidden')
     })
-
-// adicionarFilmeButton.addEventListener('click', () => {
-//     const titulo = document.getElementById('tituloInput').value
-//     const sinopse = document.getElementById('sinopseInput').value
-//     const duracao = document.getElementById('duracaoInput').value
-//     const dataLancamento = document.getElementById('dataLancamentoInput').value
-//     const dataRelancamento = document.getElementById('dataRelancamentoInput').value
-//     const fotoCapa = document.getElementById('fotoCapaInput').files[0]
-//     const valor = document.getElementById('valorInput').value
-
-//     console.log(titulo, sinopse, duracao, dataLancamento, dataRelancamento, fotoCapa, valor)
-//     modal.classList.add('hidden')
-// })
-
-
-

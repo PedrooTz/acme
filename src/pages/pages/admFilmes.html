@@ -15,13 +15,13 @@
     <link rel="icon" href="../../../img/logo.png">
     <title>Acme filmes</title>
 </head>
-<body class="bg-gradient-to-b from-black from-50% to-principal to-100% h-screen font-font">
+<body class="bg-gradient-to-b from-black from-50% to-red-950 to-100% h-screen font-font">
     <header class="flex items-center justify-between px-10 py-5">
         <img class="w-56" src="../../../img/logo.png" alt="logo">
-        <h1 class="font-fontDestaque text-white font-semibold text-6xl">
+        <h1 class="font-fontDestaque text-white font-semibold text-3xl">
             CRUD Filmes
         </h1>
-        <button id="openModal" class="text-white font-font font-semibold text-[12px] bg-principal w-48 h-10 rounded-xl">
+        <button id="openModal" class="text-white font-font font-semibold text-[12px] bg-red-900  w-48 h-10 rounded-xl">
             Adicionar novo filme
         </button>
     </header>
@@ -29,9 +29,7 @@
         <div class="flex items-start">
             <a class="flex items-center justify-center gap-4" href="../adm.html">
                 <img class="w-6" src="../../../img/voltar.png" alt="">
-                <h1 class="font-font text-white font-semibold text-xl">
-                    Voltar
-                </h1>
+               
             </a>
         </div>
         <div id="modal" class="fixed inset-0 flex items-center justify-center hidden bg-black bg-opacity-50">
@@ -50,29 +48,17 @@
                 </div>
             </div>
         </div>
-        <div class="bg-transparente rounded-md w-full h-[600px] flex items-center flex-col gap-1 py-10 px-4">
+        <div  class="bg-black rounded-md w-full h-[600px] flex items-center flex-col gap-1 py-10 px-4">
             <div class="flex justify-between w-full gap-3">
-                <div class="text-white font-fontDestaque font-bold w-full text-center text-3xl" > ID </div>
-                <div class="text-white font-fontDestaque font-bold w-full text-center text-3xl" > Filme </div>
-                <div class="text-white font-fontDestaque font-bold w-full text-center text-3xl" > Classificação </div>
-                <div class="text-white font-fontDestaque font-bold w-full text-center text-3xl" > Duração </div>
-                <div class="text-white font-fontDestaque font-bold w-full text-center text-3xl" > Valor </div>
+                <div class="text-red-900 font-fontDestaque font-bold w-full text-center text-3xl" > ID </div>
+                <div class="text-red-900 font-fontDestaque font-bold w-full text-center text-3xl" > Nome </div>
+                <div class="text-red-900 font-fontDestaque font-bold w-full text-center text-3xl" > Classificação </div>
+                <div class="text-red-900 font-fontDestaque font-bold w-full text-center text-3xl" > Duração </div>
+                <div class="text-red-900 font-fontDestaque font-bold w-full text-center text-3xl" > Valor </div>
                 <div> <img class="w-24  invisible" src="../../../img/lixo.png" alt=""> </div>
                 <div> <img class="w-24 invisible" src="../../../img/editar.png" alt=""> </div>
             </div>
-            <div id="container" class="flex justify-between w-full gap-3">
-                <div id="id" class="bg-white w-full h-10 rounded-md font-bold flex items-center justify-center" > Nome do ID </div>
-                <div id="titulo" class="bg-white w-full h-10 rounded-md font-bold flex items-center justify-center" > Nome do Filme </div>
-                <div id="classificacao" class="bg-white w-full h-10 rounded-md font-bold flex items-center justify-center" > Nome do Classificação </div>
-                <div id="duracao" class="bg-white w-full h-10 rounded-md font-bold flex items-center justify-center" > Nome do Duração </div>
-                <div id="valor" class="bg-white w-full h-10 rounded-md font-bold flex items-center justify-center" > Nome do Valor </div>
-                <button class="flex items-center justify-center">
-                    <img id="delete" class="w-32" src="../../../img/lixo.png" alt="" onclick="deleteFilme(id)"> 
-                </button>
-                <button class="flex items-center justify-center"> 
-                    <img id="update" class="w-32" src="../../../img/editar.png" alt="" onclick="alert('função em desenvolvimento!!')"> 
-                </button>
-            </div>
+            <div id="container-filmes" class="  w-full h-[600px] flex items-center flex-col gap-1 py-10 px-4"> <div>
         </div>
     </main>
 </body>

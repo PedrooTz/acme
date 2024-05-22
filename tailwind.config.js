@@ -9,8 +9,8 @@ module.exports = {
         transparente: "#fff4"
       },
       fontFamily: {
-        font: ['Khand', 'sans-serif'],
-        fontDestaque: ['Katibeh', 'serif']
+        font: ['Michorma', 'sans-serif'],
+        fontDestaque: ['Michroma', 'sans-serif']
       }
     },
   },
