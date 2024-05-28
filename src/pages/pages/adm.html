@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../output.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Capriola&family=Protest+Strike&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Katibeh&display=swap" rel="stylesheet">
+    <script type="module" src="../../js/adm-filme.js" defer></script>
+    <script type="module" src="../../js/funcoes.js" defer></script>
+    <link rel="icon" href="../../../img/logo.png">
+    <title>Acme filmes</title>
+</head>
+<body class="bg-black to-100% h-screen font-font">
+    <header class="flex items-center justify-between px-10 py-5">
+        <h1 class="font-fontDestaque underline text-white font-semibold text-3xl">
+            Filmes
+        </h1>
+        <button id="openModal" class="text-white font-font underline font-semibold text-[12px] border-white   w-48 h-10 rounded-xl">
+            Adicionar novo filme
+        </button>
+        
+    </header>
+    <main class="flex w-ful px-24 flex-col gap-4 pt-10">
+        <div class="flex items-start">
+            <a class="flex items-center justify-center gap-4" href="../index.html">
+                <img class="w-6" src="../../../img/voltar.png" alt="">
+               
+            </a>
+        </div>
+        <div id="modal" class="fixed inset-0 flex items-center justify-center hidden bg-black bg-opacity-50">
+            <div class="bg-red-900 rounded-md p-8 max-w-md">
+                <h2 class="text-2xl text-white font-semibold mb-4">Adicionar novo filme</h2>
+                <input id="tituloInput" type="text" class="border border-gray-300 rounded-md px-4 py-2 mb-4" placeholder="Título do filme">
+                <textarea id="sinopseInput" class="border border-gray-300 rounded-md px-4 py-2 mb-4" placeholder="Sinopse do filme"></textarea>
+                <input id="duracaoInput" type="text" class="border border-gray-300 rounded-md px-4 py-2 mb-4" placeholder="Duração do filme">
+                <input id="dataLancamentoInput" type="date" class="border border-gray-300 rounded-md px-4 py-2 mb-4">
+                <input id="dataRelancamentoInput" type="date" class="border border-gray-300 rounded-md px-4 py-2 mb-4">
+                <input id="fotoCapaInput" type="file" accept="image/*" class="border border-gray-300 rounded-md px-4 py-2 mb-4">
+                <input id="valorInput" type="number" min="0" step="0.01" class="border border-gray-300 rounded-md px-4 py-2 mb-4" placeholder="Valor unitário">
+                <input id="classificacaoInput" type="number" min="0" step="0.1" class="border border-gray-300 rounded-md px-4 py-2 mb-4" placeholder="Classificação">
+                <input id="generoInput" type="number" min="0" step="0.1" class="border border-gray-300 rounded-md px-4 py-2 mb-4" placeholder="Genero">
+                <input id="atorInput" type="number" min="0" step="0.1" class="border border-gray-300 rounded-md px-4 py-2 mb-4" placeholder="Ator">
+
+                <div class="flex justify-end">
+                    <button id="closeModal" class="text-white bg-red-500 hover:bg-red-600 px-4 py-2 rounded-md">Cancelar</button>
+                    <button id="adicionarFilme" class="text-white bg-blue-700 px-4 py-2 rounded-md ml-4">Adicionar</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="modalEditar" class="fixed inset-0 flex items-center justify-center hidden bg-black bg-opacity-50">
+            <div class="bg-red-900 rounded-md p-8 max-w-md">
+                <h2 class="text-2xl text-white font-semibold mb-4">Atualizar Filme</h2>
+                <input id="tituloInput2" type="text" class="border border-gray-300 rounded-md px-4 py-2 mb-4" placeholder="Título do filme">
+                <textarea id="sinopseInput2" class="border border-gray-300 rounded-md px-4 py-2 mb-4" placeholder="Sinopse do filme"></textarea>
+                <input id="duracaoInput2" type="text" class="border border-gray-300 rounded-md px-4 py-2 mb-4" placeholder="Duração do filme">
+                <input id="dataLancamentoInput2" type="date" class="border border-gray-300 rounded-md px-4 py-2 mb-4">
+                <input id="dataRelancamentoInput2" type="date" class="border border-gray-300 rounded-md px-4 py-2 mb-4">
+                <input id="fotoCapaInput2" type="file" accept="image/*" class="border border-gray-300 rounded-md px-4 py-2 mb-4">
+                <input id="valorInput2" type="number" min="0" step="0.01" class="border border-gray-300 rounded-md px-4 py-2 mb-4" placeholder="Valor unitário">
+                <input id="classificacaoInput2" type="number" min="0" step="0.1" class="border border-gray-300 rounded-md px-4 py-2 mb-4" placeholder="Classificação">
+                <input id="generoInput2" type="number" min="0" step="0.1" class="border border-gray-300 rounded-md px-4 py-2 mb-4" placeholder="Genero">
+                <input id="atorInput2" type="number" min="0" step="0.1" class="border border-gray-300 rounded-md px-4 py-2 mb-4" placeholder="Ator">
+
+                <div class="flex justify-end">
+                    <button id="cancelarEdicao" class="text-white bg-red-500 hover:bg-red-600 px-4 py-2 rounded-md">Cancelar</button>
+                    <button id="atualizarFilme" class="text-white bg-blue-700 px-4 py-2 rounded-md ml-4">Atualizar</button>
+                </div>
+            </div>
+        </div>
+    
+    
+        <div  class="bg-transparent rounded-md w-full h-[600px] flex items-center flex-col gap-1 py-10 px-4">
+            <div class="flex justify-between w-full gap-3">
+
+                <div> <img class="w-24 invisible " src="../../../img/editar.png" alt=""> </div>
+                <div class="text-red-900 font-fontDestaque font-bold w-full text-center text-2xl" > ID </div>
+                <div class="text-red-900 font-fontDestaque font-bold w-full text-center text-2xl" > Nome </div>
+                <div class="text-red-900 font-fontDestaque font-bold w-full text-center text-2xl" > Classificação </div>
+                <div class="text-red-900 font-fontDestaque font-bold w-full text-center text-2xl" > Duração </div>
+                <div class="text-red-900 font-fontDestaque font-bold w-full text-center text-2xl" > Valor </div>
+                <div> <img class="w-24  invisible" src="../../../img/lixo.png" alt=""> </div>
+                
+                
+            </div>
+            <div id="container-filmes" class="  w-full h-[600px] flex items-center flex-col gap-1 py-10 px-4"> <div>
+        </div>
+    </main>
+</body>
+</html>

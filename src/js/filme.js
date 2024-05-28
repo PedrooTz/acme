@@ -9,7 +9,7 @@ const criarCard = (filme) => {
     card.innerHTML = `
         <a class="flex items-center justify-center flex-col" href="../pages/filme.html">
             <div class="w-40 h-56 flex items-center justify-center">
-                <img class="w-[120px]" src="${filme.foto_capa}" alt="O profissional">
+                <img class="w-[120px]" src="${filme.foto_capa}" alt="">
             </div>
         </a>
     `

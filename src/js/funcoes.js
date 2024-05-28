@@ -1,4 +1,3 @@
-//Filmes
 export async function getFilmes() {
 
     const url = `http://localhost:8080/v2/acmefilmes/filmes` 
@@ -34,5 +33,18 @@ export async function postFilme (filme){
       }
       const response = await fetch(url,options)
       return response.ok
-  }   
+}
+
+export async function putFilme(id, filme) {
+    const url = `http://localhost:8080/v2/acmefilmes/filmes/${id}`;
+    const options = {
+        method: 'PUT',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(filme)
+    };
+    const response = await fetch(url, options);
+    return response.ok;
+}
   
