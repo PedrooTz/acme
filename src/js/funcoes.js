@@ -24,7 +24,6 @@ export async function deleteFilme(id) {
 }
 export async function postFilme (filme){
   
-    console.log(filme)
       const url = `http://localhost:8080/v2/acmefilmes/filme`
       const options = {
           method:'POST',
@@ -33,7 +32,7 @@ export async function postFilme (filme){
           },
           body: JSON.stringify(filme)
       }
-      const response = await fetch (url,options)
+      const response = await fetch(url,options)
       return response.ok
   }   
   

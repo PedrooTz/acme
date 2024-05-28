@@ -1,6 +1,6 @@
 'use strict'
 
-import { getFilmes, deleteFilme } from "./funcoes.js"
+import { getFilmes, deleteFilme, postFilme } from "./funcoes.js"
 
 const criarLinha = (filme) => {
 
@@ -65,17 +65,71 @@ mostrarLinha()
 mostrarLinha()
 
 
-
+async function novoFilme(){
 
 const openModalButton = document.getElementById('openModal')
 const closeModalButton = document.getElementById('closeModal')
 const modal = document.getElementById('modal')
-const adicionarFilmeButton = document.getElementById('adicionarFilme')
+
 
     openModalButton.addEventListener('click', () => {
         modal.classList.remove('hidden')
     })
 
+    document.addEventListener('DOMContentLoaded', () => {
+        const titulo = document.getElementById('tituloInput');
+        const sinopse = document.getElementById('sinopseInput');
+        const duracao = document.getElementById('duracaoInput');
+        const dataLancamento = document.getElementById('dataLancamentoInput');
+        const dataRelancamento = document.getElementById('dataRelancamentoInput');
+        const poster = document.getElementById('fotoCapaInput');
+        const valor = document.getElementById('valorInput');
+        const cadastrar = document.getElementById('adicionarFilme');
+    
+        cadastrar.addEventListener('click', async (event) => {
+            event.preventDefault(); // Impede o envio do formulário para recarregar a página
+    
+            const tituloInput = titulo.value;
+            const sinopseInput = sinopse.value;
+            const duracaoInput = duracao.value;
+            const dataLancamentoInput = dataLancamento.value;
+            const dataRelancamentoInput = dataRelancamento.value;
+            const capaInput = poster.src;
+            const valorInput = valor.value;
+            const insert = {
+                nome: tituloInput,
+                sinopse: sinopseInput,
+                duracao: duracaoInput,
+                data_lancamento: dataLancamentoInput,
+                data_relancamento: dataRelancamentoInput,
+                valor_unitario: valorInput,
+                foto_capa: capaInput,
+            };
+    
+            try {
+                
+                const sucesso = await postFilme(insert);
+                if (sucesso) {
+                    alert('Filme adicionado com sucesso!');
+                    console.log(insert);
+                    window.location.href = '../pages/pages/admFilmes.html'; 
+                } else {
+                    Error('Erro ao adicionar filme');
+                }
+            } catch (error) {
+                console.error('Erro ao adicionar filme:', error);
+                alert('Erro ao adicionar filme. Verifique o console para mais detalhes.');
+            }
+        });
+    
+    });
+    
+
     closeModalButton.addEventListener('click', () => {
         modal.classList.add('hidden')
     })
+
+}
+
+novoFilme();
+ 
